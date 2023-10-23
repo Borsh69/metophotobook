@@ -85,13 +85,14 @@ https://templatemo.com/tm-576-snapx-photography
 
         <!-- Username & Password Login form -->
         <div class="user_login">
-            <form action="" method="post">
-                <label>Email / Username</label>
-                <input name="username" type="text" id="username" />
+            <form action="{% url 'signin' %}" method="post">
+                {% csrf_token %}
+                <label for="{{ form.email.id_for_label}}">Email</label>
+                {{form.email}}
               <br />
 
-                <label>Password</label>
-                <input name="password" type="password" id="password" />
+                <label for="{{ form.password.id_for_label}}">Password</label>
+                {{form.password}}
               <br />
                 <div class="action_btns">
                     <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
@@ -116,11 +117,6 @@ https://templatemo.com/tm-576-snapx-photography
                 <label>Password</label>
                 <input name="password" type="password" id="password" />
                 <br />
-
-                <div class="checkbox">
-                    <input id="send_updates" type="checkbox" />
-                    <label for="send_updates">Send me occasional email updates</label>
-                </div>
 
                 <div class="action_btns">
                     <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
