@@ -30,141 +30,19 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="owl-features owl-carousel" style="position: relative; z-index: 5;">
+            {% for i in photo_popul%}
             <div class="item">
               <div class="thumb">
-                <img src="{% static 'assets/images/featured-01.jpg' %}" alt="">
+                <img src="{{ i.resize.url }}" alt="">
                 <div class="hover-effect">
                   <div class="content">
-                    <h4>Walk In The Nature <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <span>(4.5)</span></h4>
-                    <ul>
-                      <li><span>Contest Winner:</span> Vincent Adam</li>
-                      <li><span>Contest Author:</span> Anthony Soft</li>
-                      <li><span>Awards:</span> $1.000 + Camera Nikon</li>
-                    </ul>
+                    <h4 style="font-size: 40pt;">{{i.name}}</h4>
+                    
                   </div>
                 </div>
               </div>
             </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="{% static 'assets/images/featured-02.jpg' %}" alt="">
-                <div class="hover-effect">
-                  <div class="content">
-                    <h4>Smile In The Nature <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <span>(4.5)</span></h4>
-                    <ul>
-                      <li><span>Contest Winner:</span> Thomas Eddy</li>
-                      <li><span>Contest Author:</span> Anthony Soft</li>
-                      <li><span>Awards:</span> $1,200 + Canon EOS R7</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="{% static 'assets/images/featured-03.jpg' %}" alt="">
-                <div class="hover-effect">
-                  <div class="content">
-                    <h4>Happy In The Nature <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <span>(4.5)</span></h4>
-                    <ul>
-                      <li><span>Contest Winner:</span> Vincent Adam</li>
-                      <li><span>Contest Author:</span> Anthony Soft</li>
-                      <li><span>Awards:</span> $1,800 + Canon EOS R6</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="{% static 'assets/images/featured-01.jpg' %}" alt="">
-                <div class="hover-effect">
-                  <div class="content">
-                    <h4>Walk In The Nature <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <span>(4.5)</span></h4>
-                    <ul>
-                      <li><span>Contest Winner:</span> Thomas Eddy</li>
-                      <li><span>Contest Author:</span> Anthony Soft</li>
-                      <li><span>Awards:</span> $8,400 + Canon EOS R1</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="{% static 'assets/images/featured-02.jpg' %}" alt="">
-                <div class="hover-effect">
-                  <div class="content">
-                    <h4>Run In The Nature <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <span>(4.5)</span></h4>
-                    <ul>
-                      <li><span>Contest Winner:</span> Vincent Adam</li>
-                      <li><span>Contest Author:</span> Anthony Soft</li>
-                      <li><span>Awards:</span> $5,500 + Canon EOS R3</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="{% static 'assets/images/featured-03.jpg' %}" alt="">
-                <div class="hover-effect">
-                  <div class="content">
-                    <h4>Stay In The Nature <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <span>(4.5)</span></h4>
-                    <ul>
-                      <li><span>Contest Winner:</span> Thomas Eddy</li>
-                      <li><span>Contest Author:</span> Anthony Soft</li>
-                      <li><span>Awards:</span> $4,400 + Canon EOS R5</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="{% static 'assets/images/featured-01.jpg' %}" alt="">
-                <div class="hover-effect">
-                  <div class="content">
-                    <h4>Walk In The Nature <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <span>(4.5)</span></h4>
-                    <ul>
-                      <li><span>Contest Winner:</span> Vincent Adam</li>
-                      <li><span>Contest Author:</span> Anthony Soft</li>
-                      <li><span>Awards:</span> $3,800 + Canon EOS R6</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="{% static 'assets/images/featured-02.jpg' %}" alt="">
-                <div class="hover-effect">
-                  <div class="content">
-                    <h4>Shoot In The Nature <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <span>(4.5)</span></h4>
-                    <ul>
-                      <li><span>Contest Winner:</span> Vincent Adam</li>
-                      <li><span>Contest Author:</span> Anthony Soft</li>
-                      <li><span>Awards:</span> $2,400 + Canon EOS R7</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="{% static 'assets/images/featured-03.jpg' %}" alt="">
-                <div class="hover-effect">
-                  <div class="content">
-                    <h4>Fly In The Nature <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <span>(4.5)</span></h4>
-                    <ul>
-                      <li><span>Contest Winner:</span> Vincent Adam</li>
-                      <li><span>Contest Author:</span> Anthony Soft</li>
-                      <li><span>Awards:</span> $1,200 + Canon EOS R10</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
@@ -193,14 +71,12 @@
                 <img src="{% static 'assets/images/icon-01.png' %}" alt="">
               </div>
               <div class="right">
-                <h4>Nature Pic Contest</h4>
-                <span><em>126</em> Available Contests</span>
+                <h4>Природа</h4>
               </div>
             </div>
             <div class="thumb">
               <img src="{% static 'assets/images/popular-01.png' %}" alt="">
-              <span class="category">Top Contest</span>
-              <span class="likes"><i class="fa fa-heart"></i> 256</span>
+
             </div>
             <div class="border-button">
               <a href="{% url 'contest' %}">Загрузить своё фото</a>
@@ -214,14 +90,13 @@
                 <img src="{% static 'assets/images/icon-02.png' %}" alt="">
               </div>
               <div class="right">
-                <h4>Random Pic Contest</h4>
-                <span><em>116</em> Available Contests</span>
+                <h4>Наука</h4>
+
               </div>
             </div>
             <div class="thumb">
-              <img src="{% static 'assets/images/popular-02.png' %}" alt="">
-              <span class="category">Top Contest</span>
-              <span class="likes"><i class="fa fa-heart"></i> 256</span>
+              <img src="{% static 'assets/images/sci.png' %}" alt="">
+
             </div>
             <div class="border-button">
               <a href="{% url 'contest' %}">Загрузить своё фото</a>
@@ -235,14 +110,14 @@
                 <img src="{% static 'assets/images/icon-03.png' %}" alt="">
               </div>
               <div class="right">
-                <h4>Portrait Pic Contest</h4>
-                <span><em>164</em> Available Contests</span>
+                <h4>Бытовая</h4>
+
               </div>
             </div>
             <div class="thumb">
-              <img src="{% static 'assets/images/popular-03.png' %}" alt="">
-              <span class="category">Top Contest</span>
-              <span class="likes"><i class="fa fa-heart"></i> 256</span>
+              <img src="{% static 'assets/images/bit.jpg' %}" alt="">
+
+
             </div>
             <div class="border-button">
               <a href="{% url 'contest' %}">Загрузить своё фото</a>
@@ -256,14 +131,12 @@
                 <img src="{% static 'assets/images/icon-04.png' %}" alt="">
               </div>
               <div class="right">
-                <h4>Space Pic Contest</h4>
-                <span><em>135</em> Available Contests</span>
+                <h4>Другое</h4>
+
               </div>
             </div>
             <div class="thumb">
               <img src="{% static 'assets/images/popular-04.png' %}" alt="">
-              <span class="category">Top Contest</span>
-              <span class="likes"><i class="fa fa-heart"></i> 256</span>
             </div>
             <div class="border-button">
               <a href="{% url 'contest' %}">Загрузить своё фото</a>
@@ -284,68 +157,28 @@
         </div>
         <div class="col-lg-12">
           <div class="owl-features owl-carousel" style="position: relative; z-index: 5;">
+            {% for clo in close_photo%}
             <div class="item">
               <div class="closed-item">
                 <div class="thumb">
-                  <img src="{% static 'assets/images/closed-01.jpg' %}" alt="">
-                  <span class="winner"><em>Winner:</em> Anthony Soft</span>
-                  <span class="price"><em>Award :</em> $1,600</span>
+                  <img src="{{ clo.resize.url }}" alt="">
+  
                 </div>
                 <div class="down-content">
                   <div class="row">
                     <div class="col-7">
-                      <h4>88 Participants <br><span>Number Of Artists</span></h4>
-                    </div>
-                    <div class="col-5">
-                      <h4 class="pics">320 Pictures <br><span>Submited Pics</span></h4>
+                      <h4>Название: {{clo.name}}</h4>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="item">
-              <div class="closed-item">
-                <div class="thumb">
-                  <img src="{% static 'assets/images/closed-02.jpg' %}" alt="">
-                  <span class="winner"><em>Winner:</em> Anthony Soft</span>
-                  <span class="price"><em>Award :</em> $4,200</span>
-                </div>
-                <div class="down-content">
-                  <div class="row">
-                    <div class="col-7">
-                      <h4>96 Participants <br><span>Number Of Artists</span></h4>
-                    </div>
-                    <div class="col-5">
-                      <h4 class="pics">410 Pictures <br><span>Submited Pics</span></h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="closed-item">
-                <div class="thumb">
-                  <img src="{% static 'assets/images/closed-03.jpg' %}" alt="">
-                  <span class="winner"><em>Winner:</em> Anthony Soft</span>
-                  <span class="price"><em>Award :</em> $3,200</span>
-                </div>
-                <div class="down-content">
-                  <div class="row">
-                    <div class="col-7">
-                      <h4>74 Participants <br><span>Number Of Artists</span></h4>
-                    </div>
-                    <div class="col-5">
-                      <h4 class="pics">284 Pictures <br><span>Submited Pics</span></h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
         <div class="col-lg-12">
           <div class="border-button text-center">
-            <a href="{% url 'contests' %}">Browse Open Contests</a>
+            <a href="{% url 'contests' %}">Перейти в открытые работы</a>
           </div>
         </div>
       </div>
