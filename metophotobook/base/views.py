@@ -22,13 +22,21 @@ def home(request):
 def contest(request):
     return render(request, 'base/contest-details.html')
 
-def categories(request):
-    return render(request, 'base/categories.html')
+def albums(request):
+    albums = Album.objects.all()
+
+    context = {'albums': albums}
+    print(albums.count())
+    return render(request, 'base/albums.html', context)
 
 
 def user(request):
     return render(request, 'base/users.html')
 
+def album(request, pk):
+    album = Album.objects.get(id = pk)
+    context = {'album': album}
+    return render(request, 'base/album.html', context)
 
 def contests(request):
     return render(request, 'base/contests.html')

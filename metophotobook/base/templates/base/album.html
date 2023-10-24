@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+  <div class="page-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2 header-text">
+          <h2>Альбом: <em>{{album.name}}</em></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <section class="photos-videos">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+        </div>
+        {% for i in album.photoes.all %}
+        <div class="card" style="width: 18rem; margin-left: 20px; margin-bottom: 20px;">
+            <img src="{{i.resize.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{i.name}}</h5>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+</section>
+
+  
+
+
+{% endblock content %}

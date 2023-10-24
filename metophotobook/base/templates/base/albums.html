@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+  <div class="page-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2 header-text">
+          <h2>Все работы по <em>категориям</em></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <section class="photos-videos">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-heading text-center">
+            <h6>Photos &amp; Videos At SnapX</h6>
+            <h4>Our Featured <em>Photos &amp; Videos</em> At SnapX</h4>
+          </div>
+        </div>
+        {% for i in albums %}
+        <div class="card" style="width: 18rem; margin-left: 20px; margin-bottom: 20px;">
+            <img src="{{i.resize.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{i.name}}</h5>
+              <p class="card-text">{{i.description}}</p>
+              <a href="{% url 'album' i.id %}" class="btn btn-primary">Перейти в альбом</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+</section>
+
+  
+
+
+{% endblock content %}

@@ -36,8 +36,8 @@ class Album(models.Model):
     name = models.CharField(max_length=200)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.CharField(max_length=1500)
-    photoes = models.ManyToManyField(Photo)
-
+    photoes = models.ManyToManyField(Photo, related_name="+")
+    resize = models.ImageField(upload_to='resize/', blank=True, null=True)
     def __str__(self):
         return f"{self.name}"
 
