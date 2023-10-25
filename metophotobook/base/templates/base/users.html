@@ -20,7 +20,7 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="avatar">
-            <img src="{% static 'assets/images/user-avatar.jpg' %}" alt="">
+            <img src="{{ owner.photo_avatar.url }}" alt="">
             <h4>#{{owner.id}}   {{owner.username}}</h4>
           </div>
         </div>
