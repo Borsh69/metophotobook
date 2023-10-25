@@ -29,8 +29,7 @@ class User(models.Model):
     photo = models.ManyToManyField(Photo, verbose_name="Фотографии пользователя")
     def __str__(self):
         return f"{self.username}"    
-    class Meta:
-        unique_together = ('email', 'password')
+    
 
 class Album(models.Model):
     name = models.CharField(max_length=200)

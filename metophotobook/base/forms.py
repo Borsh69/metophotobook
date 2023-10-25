@@ -6,7 +6,9 @@ class SignInForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['email', 'password']
-        widgets = {
-            'email': forms.TextInput(attrs={'class': 'form-input'}),
-            'password': forms.PasswordInput(attrs={'class': 'form-input', type: 'password'})
-        }
+
+
+class SignUpForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'photo_avatar', 'email', 'password']

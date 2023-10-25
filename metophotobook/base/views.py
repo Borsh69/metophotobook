@@ -11,12 +11,24 @@ from django.views.decorators.csrf import csrf_protect
 
 
 def home(request):
+    owner = None
+    if 'id' in request.session:
+        id_per = int(request.session['id'])
+        owner = User.objects.get(id=id_per)
+
     photo = Photo.objects.filter(isopen=True)
     popul_photo = photo.order_by('-popularity')[:5]
     user = User.objects.all()
     close_photo = Photo.objects.filter(isopen=False)
-    form = SignInForm()
-    context = {'close_photo': close_photo,'photo_popul': popul_photo, 'user': user, 'form': form}
+    INform = SignInForm()
+    form = SignUpForm()
+    context = { 'close_photo': close_photo,
+                'photo_popul': popul_photo,
+                'user': user,
+                'INform': INform,
+                'form' : form,
+                'owner':owner
+            }
     return render(request, 'base/home.html', context)
 
 def contest(request):
@@ -49,13 +61,15 @@ def signin(request):
         user = User.objects.get(id=id_per)
         return redirect('/')
     if request.method == 'POST':
-        form = SignInForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
+        INform = SignInForm(request.POST)
+        print(INform)
+        if INform.is_valid():
+            cd = INform.cleaned_data
+            print(cd)
             try:
                 usr_account = User.objects.get(email=cd["email"])
             except User.DoesNotExist:
-                print("Error")
+                print("Error: user does not exist")
                 return redirect('/')
             if(usr_account.password == cd["password"]):
                 id_usr = int(usr_account.id)
@@ -64,11 +78,37 @@ def signin(request):
                 response = redirect(f'/')
                 return response
             else:
-                print("Error")
+                print("Error: wrong password")
 
         else:
-            print("Error")
+            print("Error: Non Valid Form")
     else:
-        form = SignInForm()
+        INform = SignInForm()
         print("SENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-    return render(request, 'base/home.html', {'form': form})
+    return redirect('/')
+
+
+@csrf_protect
+def signup(request):
+    if 'id' in request.session:
+        id_per = int(request.session['id'])
+        user = User.objects.get(id=id_per)
+        return redirect('/')
+    if request.method == 'POST':
+        form = SignUpForm(request.POST, request.FILES)
+        print(form)
+        if form.is_valid():
+            cd = form.cleaned_data
+            print(cd)
+            try:
+                form.save()
+                return redirect('/')
+            except :
+                form.add_error(None, "error add post")
+
+        else:
+            print("Error: Non Valid Form")
+    else:
+        form = SignUpForm()
+        print("SENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    return redirect('/')
