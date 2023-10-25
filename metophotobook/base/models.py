@@ -26,7 +26,7 @@ class User(models.Model):
     photo_avatar = models.ImageField(upload_to="images/avatars/%Y/%m/%d")
     email = models.EmailField(max_length=254)
     password = models.CharField(max_length=40)
-    photo = models.ManyToManyField(Photo, verbose_name="Фотографии пользователя")
+    photo = models.ManyToManyField(Photo, verbose_name="Фотографии пользователя", null=True, blank=True)
     def __str__(self):
         return f"{self.username}"    
     

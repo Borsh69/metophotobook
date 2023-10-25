@@ -18,12 +18,7 @@
   <section class="photos-videos">
     <div class="container">
       <div class="row">
-        <div class="col-lg-12">
-          <div class="section-heading text-center">
-            <h6>Photos &amp; Videos At SnapX</h6>
-            <h4>Our Featured <em>Photos &amp; Videos</em> At SnapX</h4>
-          </div>
-        </div>
+        
         {% for i in albums %}
         <div class="card" style="width: 18rem; margin-left: 20px; margin-bottom: 20px;">
             <img src="{{i.resize.url}}" class="card-img-top" alt="...">
