@@ -45,7 +45,14 @@ class Album(models.Model):
 def generate_resize(sender, instance, **kwargs):
     if instance.original:
         image = PILImage.open(instance.original)
-        image.resize((384, 216))
+        width, height = image.size
+        new_width = 384
+        new_height = 216
+        left = (width - new_width)/2
+        top = (height - new_height)/2
+        right = (width + new_width)/2
+        bottom = (height + new_height)/2
+        image = image.crop((left, top, right, bottom))
         thumb_io = BytesIO()
         image.save(thumb_io, format='PNG')  
         instance.resize.save(instance.original.name, InMemoryUploadedFile(
