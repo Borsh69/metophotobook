@@ -49,14 +49,16 @@ https://templatemo.com/tm-576-snapx-photography
                     <ul class="nav">
                         <li><a href="{% url 'home' %}" class="active">Главная</a></li>
                         <li><a href="{% url 'contest' %}">Загрузка файлов</a></li>
-                        <li><a href="{% url 'contests' %}">Фото и Видео</a></li>
+                        <li><a href="{% url 'photoes' %}">Фото и Видео</a></li>
                     </ul>  
-                    {% if not owner %}
+                    {% if p %}
+                    <div class="border-button">
+                      <a href="{% url 'user' %}"><img style="width:20%;height:60%;" src= {{owner.photo_avatar.url}}></a>
+                    </div>
+                    {% else %}
                     <div class="border-button">
                       <a id="modal_trigger" href="#modal" class="sign-in-up"><i class="fa fa-user"></i> Sign In/Up</a>
                     </div>
-                    {% else %}
-                    <a href="{% url 'user' %}"><img style="width:20%;height:60%;" src= {{owner.photo_avatar.url}}></a>
                     {% endif %}
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -109,6 +111,7 @@ https://templatemo.com/tm-576-snapx-photography
         <!-- Register Form -->
         <div class="user_register">
             <form action="{% url 'signup' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
                 <label for="{{form.username.id_for_label}}">Username</label>
                 {{form.username}}
                 <br />

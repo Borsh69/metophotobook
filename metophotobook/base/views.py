@@ -14,7 +14,11 @@ def home(request):
     owner = None
     if 'id' in request.session:
         id_per = int(request.session['id'])
+        p = True
         owner = User.objects.get(id=id_per)
+    else:
+        owner = User.objects.get(username="test")
+        p = False
 
     photo = Photo.objects.filter(isopen=True)
     popul_photo = photo.order_by('-popularity')[:5]
@@ -27,31 +31,141 @@ def home(request):
                 'user': user,
                 'INform': INform,
                 'form' : form,
-                'owner':owner
+                'owner':owner,
+                "p": p
             }
     return render(request, 'base/home.html', context)
 
 def contest(request):
-    return render(request, 'base/contest-details.html')
+    owner = None
+    if 'id' in request.session:
+        p = True
+        id_per = int(request.session['id'])
+        owner = User.objects.get(id=id_per)
+    else:
+        p = False
+        owner = User.objects.get(username="test")
+    INform = SignInForm()
+    form = SignUpForm()
+    photo = Photo.objects.filter(isopen=True)
+    user = User.objects.all()
+    close_photo = Photo.objects.filter(isopen=False)
+    context = { 'close_photo': close_photo,
+                'user': user,
+                'owner':owner,
+                'INform': INform,
+                'form' : form,
+                "photo" : photo,
+                "p": p
+            }
+    return render(request, 'base/contest-details.html', context)
 
 def albums(request):
+    owner = None
+    if 'id' in request.session:
+        p = True
+        id_per = int(request.session['id'])
+        owner = User.objects.get(id=id_per)
+    else:
+        p = False
+        owner = User.objects.get(username="test")
     albums = Album.objects.all()
-
-    context = {'albums': albums}
-    print(albums.count())
+    INform = SignInForm()
+    form = SignUpForm()
+    photo = Photo.objects.filter(isopen=True)
+    user = User.objects.all()
+    close_photo = Photo.objects.filter(isopen=False)
+    context = { 'close_photo': close_photo,
+                'user': user,
+                'owner':owner,
+                'INform': INform,
+                'form' : form,
+                "photo" : photo,
+                'albums': albums,
+                "p": p
+            }
     return render(request, 'base/albums.html', context)
 
 
 def user(request):
-    return render(request, 'base/users.html')
+    owner = None
+    if 'id' in request.session:
+        p = True
+        id_per = int(request.session['id'])
+        owner = User.objects.get(id=id_per)
+    else:
+        p = False
+        owner = User.objects.get(username="test")
+        return redirect('/')
+    albums = Album.objects.all()    
+    INform = SignInForm()
+    form = SignUpForm()
+    photo = Photo.objects.filter(isopen=True)
+    user = User.objects.all()
+    close_photo = Photo.objects.filter(isopen=False)
+    context = { 'close_photo': close_photo,
+                'user': user,
+                'owner':owner,
+                'INform': INform,
+                'form' : form,
+                "photo" : photo,
+                'albums': albums,
+                "p": p
+            }
+    return render(request, 'base/users.html', context)
 
 def album(request, pk):
-    album = Album.objects.get(id = pk)
-    context = {'album': album}
+    owner = None
+    if 'id' in request.session:
+        p = True
+        id_per = int(request.session['id'])
+        owner = User.objects.get(id=id_per)
+    else:
+        p = False
+        owner = User.objects.get(username="test")
+    albums = Album.objects.get(id = pk)
+    photo = Photo.objects.filter(isopen=True)
+    user = User.objects.all()
+    INform = SignInForm()
+    form = SignUpForm()
+    close_photo = Photo.objects.filter(isopen=False)
+    context = { 'close_photo': close_photo,
+                'user': user,
+                'INform': INform,
+                'form' : form,
+                'owner':owner,
+                "photo" : photo,
+                'albums': albums,
+                "p": p
+            }
+    
     return render(request, 'base/album.html', context)
 
-def contests(request):
-    return render(request, 'base/contests.html')
+def photoes(request):
+    owner = None
+    if 'id' in request.session:
+        p = True
+        id_per = int(request.session['id'])
+        owner = User.objects.get(id=id_per)
+    else:
+        p = False
+        owner = User.objects.get(username="test")
+    albums = Album.objects.all()
+    INform = SignInForm()
+    form = SignUpForm()
+    photo = Photo.objects.filter(isopen=True)
+    user = User.objects.all()
+    close_photo = Photo.objects.filter(isopen=False)
+    context = { 'close_photo': close_photo,
+                'user': user,
+                'owner':owner,
+                'INform': INform,
+                'form' : form,
+                "photo" : photo,
+                'albums': albums, 
+                "p": p
+            }
+    return render(request, 'base/photoes.html', context)
 
 
 @csrf_protect
