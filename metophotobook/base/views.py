@@ -98,15 +98,14 @@ def user(request):
         owner = User.objects.get(username="test")
         return redirect('/')
     albums = Album.objects.all()    
-    INform = SignInForm()
-    form = SignUpForm()
+    form = AlbumForm()
+
     photo = Photo.objects.filter(isopen=True)
     user = User.objects.all()
     close_photo = Photo.objects.filter(isopen=False)
     context = { 'close_photo': close_photo,
                 'user': user,
                 'owner':owner,
-                'INform': INform,
                 'form' : form,
                 "photo" : photo,
                 'albums': albums,
@@ -127,7 +126,7 @@ def album(request, pk):
     photo = Photo.objects.filter(isopen=True)
     user = User.objects.all()
     INform = SignInForm()
-    form = SignUpForm()
+    form = PhotoForm()
     close_photo = Photo.objects.filter(isopen=False)
     context = { 'close_photo': close_photo,
                 'user': user,
@@ -136,7 +135,8 @@ def album(request, pk):
                 'owner':owner,
                 "photo" : photo,
                 'albums': albums,
-                "p": p
+                "p": p,
+                "pk":pk,
             }
     
     return render(request, 'base/album.html', context)
@@ -226,3 +226,56 @@ def signup(request):
         form = SignUpForm()
         print("SENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     return redirect('/')
+
+@csrf_protect
+def addalbum(request):
+    if 'id' in request.session:
+        id_per = int(request.session['id'])
+        user = User.objects.get(id=id_per)
+    else:
+        return redirect('/')
+    if request.method == 'POST':
+        form = AlbumForm(request.POST, request.FILES)
+        if form.is_valid():
+            name = form.cleaned_data["name"]
+            description = form.cleaned_data["description"]
+            resize = form.cleaned_data["resize"]
+            try:
+                alb = Album(name=name, description=description, resize=resize, author=user)
+                alb.save()
+                return redirect('/user/')
+            except :
+                form.add_error(None, "error add post")
+
+        else:
+            print("Error: Non Valid Form")
+
+    return redirect('/user/')
+
+
+@csrf_protect
+def addphoto(request, pk):
+    print("I`m in", pk)
+    if 'id' in request.session:
+        id_per = int(request.session['id'])
+        user = User.objects.get(id=id_per)
+    else:
+        return redirect('/')
+    if request.method == 'POST':
+        form = PhotoForm(request.POST, request.FILES)
+        album = Album.objects.get(id=pk)
+        if form.is_valid():
+            name = form.cleaned_data["name"]
+            original = form.cleaned_data["original"]
+            print(name, original, album)
+            try:
+                photo = Photo(name=name, original=original, album_set=album)
+                photo.save()
+                return redirect('/user/')
+            except :
+                form.add_error(None, "error add post")
+
+        else:
+            print("Error: Non Valid Form")
+
+    return redirect('/album/'+pk+"/")

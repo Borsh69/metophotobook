@@ -1,9 +1,35 @@
 {% extends 'main.html' %}
 {% load static %}
+
+{% block section %}
+<section class="popupBody">
+  <!-- Social Login -->
+  <div class="social_login">
+      <form action="{% url 'addalbum' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="{{form.name.id_for_label}}">Name</label>
+        {{form.name}}
+      <br />
+
+        <label for="{{form.description.id_for_label}}">Description</label>
+        {{form.description}}
+      <br />
+      <label for="{{form.resize.id_for_label}}">Thumbnail</label>
+        {{form.resize}}
+      <br />
+        <div class="action_btns">
+            <div class="one_half last"><button type="submit" class="btn btn_red">Add</button></div>
+        </div>
+    </form>
+  </div>
+</div>
+  
+</section>
+{% endblock section %}
+
 {% block content %}
-
 <body>
-
+  
   <div class="page-heading">
     <div class="container">
       <div class="row">
@@ -44,7 +70,13 @@
             </div>
           </div>
         {% endfor %}
-      
+        <div class="card" style="width: 18rem; margin-left: 20px; margin-bottom: 20px;">
+          <div class="card-body">
+            <h5 class="card-title">Добавить новый альбом?</h5>
+            <p class="card-text">Разместите больше фото котиков :3</p>
+            <a id="modal_trigger" href="#modal" class="btn btn-primary">Создать</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>

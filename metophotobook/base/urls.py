@@ -11,4 +11,6 @@ urlpatterns = [
     path('signin/', views.signin, name="signin"),
     path('signup/', views.signup, name="signup"),
     path('album/<str:pk>/', views.album, name="album"),
+    path('addalbum/', views.addalbum, name="addalbum"),
+    path('addphoto/<str:pk>/', views.addphoto, name="addphoto"),
 ]
